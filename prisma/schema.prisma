@@ -2,134 +2,171 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
-    previewFeatures = ["referentialIntegrity"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
-    referentialIntegrity = "prisma"
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model Example {
-    id String @id @default(cuid())
+  id String @id @default(cuid())
 }
 
 enum StoreNames {
-    GlobalData
-    PcDiga
-    PcComponentes
+  GlobalData
+  PcDiga
+  PcComponentes
 }
 
 model Store {
-    id String @id @default(cuid())
-    name StoreNames
-    product_url String @default("")
-    price Float @default(0)
-    discount Int?
-    availability Boolean?
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
+  id           String     @id @default(cuid())
+  name         StoreNames
+  product_url  String     @default("")
+  price        Float      @default(0)
+  discount     Int?
+  availability Boolean?
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+}
+
+model StoreGlobalData {
+  id           String   @id @default(cuid())
+  name         String   @default("GlobalData")
+  product_url  String   @default("")
+  price        Float    @default(0)
+  discount     Int?
+  availability Boolean?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 }
 
 model StorePcDiga {
-    id String @id @default(cuid())
-    name String @default("PcDiga")
-    product_url String @default("")
-    price Float @default(0)
-    discount Int?
-    availability Boolean?
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
+  id           String   @id @default(cuid())
+  name         String   @default("PcDiga")
+  product_url  String   @default("")
+  price        Float    @default(0)
+  discount     Int?
+  availability Boolean?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model StorePcComponentes {
+  id           String   @id @default(cuid())
+  name         String   @default("PcComponentes")
+  product_url  String   @default("")
+  price        Float    @default(0)
+  discount     Int?
+  availability Boolean?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model ProductOnStore {
+  id Int @id @default(autoincrement())
 }
 
 model PcCase {
-    id String @id @default(cuid())
-    product_type String @default("pccase")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("pccase")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Motherboard {
-    id String @id @default(cuid())
-    product_type String @default("motherboard")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("motherboard")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Cpu {
-    id String @id @default(cuid())
-    product_type String @default("cpu")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("cpu")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Cooler {
-    id String @id @default(cuid())
-    product_type String @default("cooler")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("cooler")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Ram {
-    id String @id @default(cuid())
-    product_type String @default("ram")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("ram")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Gpu {
-    id String @id @default(cuid())
-    product_type String @default("gpu")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("gpu")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Psu {
-    id String @id @default(cuid())
-    product_type String @default("psu")
-    name String 
-    abrev String
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-    computer Computer?
+  id           String    @id @default(cuid())
+  product_type String    @default("psu")
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
 }
 
 model Computer {
-    id String @id @default(cuid())
-    name String
-    description String
-    pccase PcCase @relation(fields: [pccase_id], references: [id])
-    pccase_id String @unique     
-    motherboard Motherboard @relation(fields: [motherboard_id], references: [id])
-    motherboard_id String @unique
-    cpu Cpu @relation(fields: [cpu_id], references: [id])
-    cpu_id String @unique    
-    cooler Cooler @relation(fields: [cooler_id], references: [id])
-    cooler_id String @unique
-    ram Ram @relation(fields: [ram_id], references: [id])
-    ram_id String @unique    
-    gpu Gpu @relation(fields: [gpu_id], references: [id])
-    gpu_id String @unique
-    psu Psu @relation(fields: [psu_id], references: [id])
-    psu_id String @unique
+  id             String      @id @default(cuid())
+  name           String
+  description    String
+  pccase         PcCase      @relation(fields: [pccase_id], references: [id])
+  pccase_id      String      @unique
+  motherboard    Motherboard @relation(fields: [motherboard_id], references: [id])
+  motherboard_id String      @unique
+  cpu            Cpu         @relation(fields: [cpu_id], references: [id])
+  cpu_id         String      @unique
+  cooler         Cooler      @relation(fields: [cooler_id], references: [id])
+  cooler_id      String      @unique
+  ram            Ram         @relation(fields: [ram_id], references: [id])
+  ram_id         String      @unique
+  gpu            Gpu         @relation(fields: [gpu_id], references: [id])
+  gpu_id         String      @unique
+  psu            Psu         @relation(fields: [psu_id], references: [id])
+  psu_id         String      @unique
+
+  ComputerSet   ComputerSet? @relation(fields: [computerSetId], references: [id])
+  computerSetId String?
+}
+
+model ComputerSet {
+  id          String     @id @default(cuid())
+  name        String
+  description String
+  computers   Computer[]
+  computer_id String
 }
