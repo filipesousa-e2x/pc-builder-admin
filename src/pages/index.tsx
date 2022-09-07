@@ -3,12 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { trpc } from "../utils/trpc";
 
-type TechnologyCardProps = {
-    name: string;
-    description: string;
-    documentation: string;
-};
-
 interface LinkCardInterface {
     content: string;
     link: string;
@@ -55,7 +49,7 @@ const Home: NextPage = () => {
 
             <main className="container mx-auto py-8">
                 <div className="grid grid-cols-3 gap-4">
-                    {linkCardProps.map((item, index) => (
+                    { linkCardProps.map((item, index) => (
                         <div key={index} className="border h-52 flex items-center justify-center text-blue-500 font-semibold hover:bg-orange-200">
                             <LinkCard content={item.content} link={item.link}  />
                         </div>

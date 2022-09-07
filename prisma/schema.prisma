@@ -22,6 +22,11 @@ enum StoreNames {
   PcComponentes
 }
 
+enum CpuManufacturer {
+    AMD
+    INTEL
+}
+
 model Store {
   id           String     @id @default(cuid())
   name         StoreNames
@@ -95,6 +100,7 @@ model Cpu {
   product_type String    @default("cpu")
   name         String
   abrev        String
+  manufacturer CpuManufacturer
   created_at   DateTime  @default(now())
   updated_at   DateTime  @updatedAt
   computer     Computer?

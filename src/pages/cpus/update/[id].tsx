@@ -1,8 +1,9 @@
 
 const updateCpu = () => {
-    return 
-        <>
-        </>
+    return (
+        <h2> TESTE </h2>
+    )
+
 }
 
 export default updateCpu;
