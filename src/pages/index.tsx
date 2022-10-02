@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { trpc } from "../utils/trpc";
 
 interface LinkCardInterface {
     content: string;
@@ -36,9 +35,6 @@ const LinkCard = (props: LinkCardInterface) => {
 
 
 const Home: NextPage = () => {
-    //   const hello = trpc.useQuery(["example.hello", { text: "Hello" }]);
-    //   const squared = trpc.useQuery(["cpu_router.getCpu", { id: 5 }]);
-
     return (
         <>
             <Head>

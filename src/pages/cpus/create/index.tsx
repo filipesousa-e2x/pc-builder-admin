@@ -1,5 +1,6 @@
 import { CpuManufacturer } from "@prisma/client";
 import { MouseEvent, useState } from "react";
+import { MutationState } from "react-query/types/core/mutation";
 import { cpu_manufacturer_e } from "../../../utils/enums";
 import { trpc } from "../../../utils/trpc";
 
@@ -25,9 +26,9 @@ const cpuCreate = () => {
 
     const handleSubmit = async (e: MouseEvent) => {
         e.preventDefault();
-        console.log(cpu_state);
-        const s = createCpu.mutate(cpu_state);
-        console.log(s);
+
+        createCpu.mutate(cpu_state);
+
     }
 
     // textarea - "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -39,6 +40,9 @@ const cpuCreate = () => {
                     { <label htmlFor="">{ cpu_state.name }</label> }
                     { <label htmlFor="">{ cpu_state.abrev }</label> }
                     { <label htmlFor="">{ cpu_state.manufacturer }</label> }
+                </div>
+                <div className="text-green-600">
+                    { createCpu.isSuccess && <p>Success</p> }
                 </div>
                 <div className="text-red-600">
                     { createCpu.error && <p>Something went wrong! {createCpu.error.message}</p> }
