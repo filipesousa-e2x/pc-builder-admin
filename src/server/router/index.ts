@@ -2,18 +2,16 @@
 import { createRouter } from "./context";
 import superjson from "superjson";
 
-import { exampleRouter } from "./example";
-import { cpuRouter } from "./cpuRouter";
-import { pccaseRouter } from "./pcCaseRouter";
-import { motherboardRouter } from "./motherboardRouter";
-import { coolerRouter } from "./coolerRouter";
-import { ramRouter } from "./ramRouter";
-import { gpuRouter } from "./gpuRouter";
-import { psuRouter } from "./psuRouter";
+import { cpuRouter } from "./custom_routers/cpuRouter";
+import { pccaseRouter } from "./custom_routers/pcCaseRouter";
+import { motherboardRouter } from "./custom_routers/motherboardRouter";
+import { coolerRouter } from "./custom_routers/coolerRouter";
+import { ramRouter } from "./custom_routers/ramRouter";
+import { gpuRouter } from "./custom_routers/gpuRouter";
+import { psuRouter } from "./custom_routers/psuRouter";
 
 export const appRouter = createRouter()
   .transformer(superjson)
-  .merge("example.", exampleRouter)
   .merge('pccase_router.', pccaseRouter)
   .merge('motherboard_router.', motherboardRouter)
   .merge('cpu_router.', cpuRouter)

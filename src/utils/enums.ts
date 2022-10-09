@@ -12,7 +12,7 @@ type gpu_manufacturer_e = z.infer<typeof gpu_manufacturer_e>;
 const cpu_architecture_e = z.enum(["ZEN2", "ZEN3", "ZEN4"]);
 type cpu_architecture_e = z.infer<typeof cpu_architecture_e>;
 
-const cpu_socket_e = z.enum(["1", "2"]);
+const cpu_socket_e = z.enum(["AM4", "AM5", 'LGA 1151']);
 type cpu_socket_e = z.infer<typeof cpu_socket_e>;
 
 const cooler_type_e = z.enum(["AIR", "LIQUID"]);

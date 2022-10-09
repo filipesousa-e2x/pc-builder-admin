@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DisplayTable from "../../components/displayTable";
 import { trpc } from "../../utils/trpc";
 
 const cpuList = () => {
@@ -11,7 +12,12 @@ const cpuList = () => {
                     <h3>CPU List</h3>
                     <Link href={{ pathname: '/cpus/create' }}>Create New</Link>
                 </div>
-                <table className="table-auto">
+
+                { all_cpus.isFetched && 
+                    <DisplayTable  pc_components={all_cpus.data!} ></DisplayTable>
+                }
+
+                {/* <table className="table-auto">
                     <thead>
                         <tr>
                             <th>Name Abrev</th>
@@ -32,7 +38,7 @@ const cpuList = () => {
                             ))
                         }
                     </tbody>
-                </table>
+                </table> */}
             </main>
         </>
 

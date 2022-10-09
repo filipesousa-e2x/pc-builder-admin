@@ -1,4 +1,4 @@
-import { createRouter } from "./context";
+import { createRouter } from "../context";
 import { z } from 'zod';
 
 
@@ -9,7 +9,7 @@ const validateCpuForm = z.object({
 })
 
 
-export const psuRouter = createRouter()
+export const coolerRouter = createRouter()
     .query('getCpuList', {
         resolve: async function({ ctx }) {
             return ctx.prisma.cpu.findMany();
