@@ -23,8 +23,8 @@ enum StoreNames {
 }
 
 enum CpuManufacturer {
-    AMD
-    INTEL
+  AMD
+  INTEL
 }
 
 model Store {
@@ -96,13 +96,13 @@ model Motherboard {
 }
 
 model Cpu {
-  id           String    @id @default(cuid())
-  product_type String    @default("cpu")
+  id           String          @id @default(cuid())
+  product_type String          @default("cpu")
   name         String
   abrev        String
   manufacturer CpuManufacturer
-  created_at   DateTime  @default(now())
-  updated_at   DateTime  @updatedAt
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
   computer     Computer?
 }
 
@@ -146,6 +146,16 @@ model Psu {
   computer     Computer?
 }
 
+model Storage {
+  id           String    @id @default(cuid())
+  product_type String
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
+}
+
 model Computer {
   id             String      @id @default(cuid())
   name           String
@@ -164,6 +174,8 @@ model Computer {
   gpu_id         String      @unique
   psu            Psu         @relation(fields: [psu_id], references: [id])
   psu_id         String      @unique
+  storage        Storage     @relation(fields: [storage_id], references: [id])
+  storage_id     String      @unique
 
   ComputerSet   ComputerSet? @relation(fields: [computerSetId], references: [id])
   computerSetId String?
