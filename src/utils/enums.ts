@@ -28,6 +28,19 @@ export {
     cooler_type_e
 };
 
+export enum ProductType {
+    Pc_Case = 'pc_case',
+    Motherboard = 'motherboard',
+    CPU = 'cpu',
+    Cooler = 'cooler',
+    Ram = 'ram',
+    Gpu = 'gpu',
+    Psu = 'psu',
+    Storage = 'storage',
+    Cable = 'cable',
+    Fan = 'fan'
+}
+
 export enum CpuType {
     Intel = 'Intel',
     AMD = 'AMD'
