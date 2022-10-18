@@ -156,6 +156,26 @@ model Storage {
   computer     Computer?
 }
 
+model Cable {
+  id           String    @id @default(cuid())
+  product_type String
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
+}
+
+model Fan {
+  id           String    @id @default(cuid())
+  product_type String
+  name         String
+  abrev        String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  computer     Computer?
+}
+
 model Computer {
   id             String      @id @default(cuid())
   name           String
@@ -176,6 +196,10 @@ model Computer {
   psu_id         String      @unique
   storage        Storage     @relation(fields: [storage_id], references: [id])
   storage_id     String      @unique
+  cable          Cable       @relation(fields: [cable_id], references: [id])
+  cable_id       String      @unique
+  fan            Fan         @relation(fields: [fan_id], references: [id])
+  fan_id         String      @unique
 
   ComputerSet   ComputerSet? @relation(fields: [computerSetId], references: [id])
   computerSetId String?
@@ -187,4 +211,6 @@ model ComputerSet {
   description String
   computers   Computer[]
   computer_id String
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
 }
