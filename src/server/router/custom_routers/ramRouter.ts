@@ -1,24 +1,16 @@
+import { ram_zod_validation } from "../../../utils/zod_objects";
 import { createRouter } from "../context";
-import { z } from 'zod';
-
-
-const validateCpuForm = z.object({
-    name: z.string().min(10),
-    abrev: z.string().max(20),
-    manufacturer: z.string()
-})
-
 
 export const ramRouter = createRouter()
-    .query('getCpuList', {
+    .query('getRamList', {
         resolve: async function({ ctx }) {
-            return ctx.prisma.cpu.findMany();
+            return ctx.prisma.ram.findMany();
         }
     })
-    .mutation('createCpu', {
-        input: validateCpuForm,
+    .mutation('createRam', {
+        input: ram_zod_validation,
         async resolve({ ctx, input }) {
-            return ctx.prisma.cpu.create({
+            return ctx.prisma.ram.create({
                 data: input
             })
         }

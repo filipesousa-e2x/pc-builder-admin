@@ -1,24 +1,16 @@
+import { psu_zod_validation } from "../../../utils/zod_objects";
 import { createRouter } from "../context";
-import { z } from 'zod';
-
-
-const validateCpuForm = z.object({
-    name: z.string().min(10),
-    abrev: z.string().max(20),
-    manufacturer: z.string()
-})
-
 
 export const psuRouter = createRouter()
-    .query('getCpuList', {
+    .query('getPsuList', {
         resolve: async function({ ctx }) {
-            return ctx.prisma.cpu.findMany();
+            return ctx.prisma.psu.findMany();
         }
     })
-    .mutation('createCpu', {
-        input: validateCpuForm,
+    .mutation('createPsu', {
+        input: psu_zod_validation,
         async resolve({ ctx, input }) {
-            return ctx.prisma.cpu.create({
+            return ctx.prisma.psu.create({
                 data: input
             })
         }

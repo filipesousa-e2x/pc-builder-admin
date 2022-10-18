@@ -1,24 +1,17 @@
+import { pc_case_zod_validation } from "../../../utils/zod_objects";
 import { createRouter } from "../context";
-import { z } from 'zod';
 
 
-const validateCpuForm = z.object({
-    name: z.string().min(10),
-    abrev: z.string().max(20),
-    manufacturer: z.string()
-})
-
-
-export const pccaseRouter = createRouter()
-    .query('getCpuList', {
+export const pcCaseRouter = createRouter()
+    .query('getPcCaseList', {
         resolve: async function({ ctx }) {
-            return ctx.prisma.cpu.findMany();
+            return ctx.prisma.pcCase.findMany();
         }
     })
-    .mutation('createCpu', {
-        input: validateCpuForm,
+    .mutation('createPcCase', {
+        input: pc_case_zod_validation,
         async resolve({ ctx, input }) {
-            return ctx.prisma.cpu.create({
+            return ctx.prisma.pcCase.create({
                 data: input
             })
         }

@@ -3,7 +3,7 @@ import { createRouter } from "./context";
 import superjson from "superjson";
 
 import { cpuRouter } from "./custom_routers/cpuRouter";
-import { pccaseRouter } from "./custom_routers/pcCaseRouter";
+import { pcCaseRouter } from "./custom_routers/pcCaseRouter";
 import { motherboardRouter } from "./custom_routers/motherboardRouter";
 import { coolerRouter } from "./custom_routers/coolerRouter";
 import { ramRouter } from "./custom_routers/ramRouter";
@@ -12,7 +12,7 @@ import { psuRouter } from "./custom_routers/psuRouter";
 
 export const appRouter = createRouter()
   .transformer(superjson)
-  .merge('pccase_router.', pccaseRouter)
+  .merge('pccase_router.', pcCaseRouter)
   .merge('motherboard_router.', motherboardRouter)
   .merge('cpu_router.', cpuRouter)
   .merge('cooler_router.', coolerRouter)
