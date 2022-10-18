@@ -19,19 +19,33 @@ const linkCardProps: LinkCardInterface[] = [
     { content: "View PSU", link: "/psus" }
 ];
 
+// const LinkCard = (props: LinkCardInterface) => {
+//     return (
+//         <div className="flex items-center justify-center">
+//             <Link
+//                 className="text-lg text-blue-600"
+//                 href={{ pathname: props.link }}
+//             >
+//                 {props.content}
+//             </Link>
+//         </div>
+//     );
+// };
+
 const LinkCard = (props: LinkCardInterface) => {
     return (
-        <div className="flex items-center justify-center">
+        <div className="w-48 text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             <Link
-                className="text-lg text-blue-600"
                 href={{ pathname: props.link }}
-            >
-                {props.content}
+                className="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium rounded-t-lg border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+                <button>
+                    <svg aria-hidden="true" className="mr-2 w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                    { props.content }
+                </button>
             </Link>
         </div>
-    );
-};
-
+    )
+}
 
 
 const Home: NextPage = () => {
