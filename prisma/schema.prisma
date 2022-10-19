@@ -148,7 +148,7 @@ model Psu {
 
 model Storage {
   id           String    @id @default(cuid())
-  product_type String
+  product_type String    @default("storage")
   name         String
   abrev        String
   created_at   DateTime  @default(now())
@@ -158,7 +158,7 @@ model Storage {
 
 model Cable {
   id           String    @id @default(cuid())
-  product_type String
+  product_type String    @default("cable")
   name         String
   abrev        String
   created_at   DateTime  @default(now())
@@ -168,7 +168,7 @@ model Cable {
 
 model Fan {
   id           String    @id @default(cuid())
-  product_type String
+  product_type String    @default("fan")
   name         String
   abrev        String
   created_at   DateTime  @default(now())
