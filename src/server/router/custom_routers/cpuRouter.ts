@@ -4,7 +4,9 @@ import { cpu_zod_validation, id_zod_validation } from "../../../utils/zod_object
 export const cpuRouter = createRouter()
     .query('getCpuList', {
         resolve: async function({ ctx }) {
-            return ctx.prisma.cpu.findMany();
+            const results = await ctx.prisma.cpu.findMany();
+            console.log(results);
+            return results;
         }
     })
     .mutation('getCpuById', {
