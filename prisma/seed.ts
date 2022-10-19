@@ -161,10 +161,92 @@ const coolers: Cooler[] = [
         stores: default_stores
     }
 ];
-const rams: Ram[] = [];
-const gpus: Gpu[] = [];
-const psus: Psu[] = [];
-const storages: Storage[] = [];
+const rams: Ram[] = [
+    {
+        product_type: 'ram',
+        name: 'Team Group Kit 16GB (2 x 8GB) DDR4 3600MHz Vulcan Z Grey CL18',
+        abrev: 'Team Group 16GB (2 x 8GB) DDR4 3600MHz CL18',
+        stores: default_stores 
+    },
+    {
+        product_type: 'ram',
+        name: 'Team Group Kit 16GB (2 x 8GB) DDR4 3200MHz Vulcan Z Grey CL16',
+        abrev: 'Team Group 16GB (2x8GB) DDR4 3200Mhz CL16',
+        stores: default_stores
+    },
+    {
+        product_type: 'ram',
+        name: 'Kingston Kit 32GB (2 x 16GB) DDR4 3600MHz FURY Renegade Preto 2R CL16',
+        abrev: 'Kingston 32GB (2x16GB) DDR4 3600Mhz CL16',
+        stores: default_stores
+    }
+];
+const gpus: Gpu[] = [
+    {
+        product_type: 'gpu',
+        name: 'Gráfica MSI GeForce® GTX 1650 D6 VENTUS XS OC 4G',
+        abrev: 'MSI GeForce GTX 1650 4G',
+        stores: default_stores
+    },
+    {
+        product_type: 'gpu',
+        name: 'Gráfica MSI GeForce® RTX 3050 VENTUS 2X 8G OC',
+        abrev: 'MSI GeForce® RTX 3050 8G OC',
+        stores: default_stores
+    },
+    {
+        product_type: 'gpu',
+        name: 'Gráfica MSI GeForce® RTX 3060 GAMING X 12G',
+        abrev: 'MSI GeForce® RTX 3060 12G',
+        stores: default_stores
+    },
+    {
+        product_type: 'gpu',
+        name: 'Gráfica MSI GeForce® RTX 3070 GAMING X TRIO 8G',
+        abrev: 'MSI GeForce® RTX 3070 8G',
+        stores: default_stores
+    }
+];
+const psus: Psu[] = [
+    {
+        product_type: 'psu',
+        name: 'Fonte Modular Kolink Enclave 500W 80+ Gold',
+        abrev: 'Kolink Enclave 500W 80+ Gold',
+        stores: default_stores
+    },
+    {
+        product_type: 'psu',
+        name: 'Fonte Seasonic G12 GC 550W 80+ Gold',
+        abrev: 'Seasonic G12 GC 550W 80+ Gold',
+        stores: default_stores
+    },
+    {
+        product_type: 'psu',
+        name: 'Fonte Modular Kolink Enclave 600W 80+ Gold',
+        abrev: 'Kolink Enclave 600W 80+ Gold',
+        stores: default_stores
+    },
+    {
+        product_type: 'psu',
+        name: 'Fonte Modular Seasonic Focus GX-750W 80+ Gold',
+        abrev: 'Seasonic Focus GX-750W 80+ Gold',
+        stores: default_stores
+    }
+];
+const storages: Storage[] = [
+    {
+        product_type: 'storage',
+        name: 'Disco SSD Western Digital Blue SN570 500GB M.2 NVMe',
+        abrev: 'SSD WDB 500GB M.2 NVMe',
+        stores: default_stores
+    },
+    {
+        product_type: 'storage',
+        name: 'Disco SSD Samsung 980 1TB M.2 NVMe',
+        abrev: 'SSD Samsung 980 1TB M.2 NVMe',
+        stores: default_stores
+    }
+];
 
 
 (async function() {
