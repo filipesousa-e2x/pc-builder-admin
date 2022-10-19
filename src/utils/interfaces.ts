@@ -1,3 +1,5 @@
+import { cpu_manufacturer_e } from "./enums"
+
  
 export interface Store {
     store_name: string,
@@ -20,7 +22,9 @@ export interface Component {
 
 export interface PcCase extends Component {}
 export interface Motherboard extends Component {}
-export interface Cpu extends Component {}
+export interface Cpu extends Component {
+    manufacturer: cpu_manufacturer_e
+}
 export interface Cooler extends Component {}
 export interface Ram extends Component {}
 export interface Gpu extends Component {}
