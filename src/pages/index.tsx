@@ -39,10 +39,6 @@ const LinkCard = (props: LinkCardInterface) => {
                 href={{ pathname: props.link }}
                 className="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium rounded-t-lg border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
                 <button>
-                    <svg aria-hidden="true" className="mr-2 w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd">
-                        </path>
-                    </svg>
                     { props.content }
                 </button>
             </Link>
@@ -61,17 +57,19 @@ const Home: NextPage = () => {
             </Head>
 
             <main className="container mx-auto py-8">
-                <div className="grid grid-cols-6">
-                    <div className="flex align-items center-items">
-                        Teste
-                    </div>
-                </div>
-                <div className="grid grid-cols-6">
-                    { linkCardProps.map((item, index) => (
-                        <div key={index} className="border h-52 flex items-center justify-center text-blue-500 font-semibold hover:bg-orange-200">
-                            <LinkCard content={item.content} link={item.link}  />
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="p4 text-center justify-center h-44">TESTE</div>
+                    <div className="">
+                        <h2>TITLE</h2>
+                        <div className="grid grid-flow-row">
+                            { linkCardProps.map((item, index) => (
+                                <div key={index} className="justify-center text-center text-blue-600">
+                                    <LinkCard content={item.content} link={item.link}  />
+                                </div>
+                            ))}                            
                         </div>
-                    ))}
+                    </div>
+
                 </div>
             </main>
         </>
